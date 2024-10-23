@@ -2194,8 +2194,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1381102412}
   - component: {fileID: 1381102411}
+  - component: {fileID: 1381102413}
   m_Layer: 0
-  m_Name: Script Body
+  m_Name: Manager Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2233,6 +2234,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1381102413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381102410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e316d759db28e84f992f13c11857c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraSwtich_Manager: {fileID: 0}
+  directionPad_Manager: {fileID: 0}
 --- !u!1 &1439966767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2890,7 +2905,6 @@ MonoBehaviour:
   - {fileID: 1528717780}
   - {fileID: 2122224945}
   - {fileID: 159376675}
-  isSelectedMax: 0
 --- !u!1 &1911289653
 GameObject:
   m_ObjectHideFlags: 0

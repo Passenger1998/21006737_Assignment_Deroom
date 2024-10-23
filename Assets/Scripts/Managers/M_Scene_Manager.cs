@@ -26,7 +26,7 @@ public class M_Scene_Manager : MonoBehaviour
                 case Direction.right:
                     break;
                 default:
-                    breal;
+                    break;
             }
 
         }
