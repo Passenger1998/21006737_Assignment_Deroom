@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using static ES_Enums_Library;
 using static ES_Structs_Library;
 
-public class IC_DP_Clicks_Locals : MonoBehaviour
+public class IC_DP_Clicks_Locals : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
     public M_B_DirectionPad_Manager  directionPad_Manager;
     public Direction direction_display;
     public bool isSelected;
+    public bool isHovered;
     public Image image;
 
-    public void Response_LeftClick()
+    void Response_LeftClick()
     {
         if (isSelected)
         {
@@ -28,6 +30,22 @@ public class IC_DP_Clicks_Locals : MonoBehaviour
                 image.color = Color.red;
             }
             
+        }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!isSelected) 
+        {
+            isHovered = true;
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (isHovered)
+        {
+            isHovered = false;
         }
     }
 

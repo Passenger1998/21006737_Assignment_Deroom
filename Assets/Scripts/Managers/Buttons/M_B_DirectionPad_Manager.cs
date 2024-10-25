@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using static ES_Enums_Library;
-using static T_M_001_001_All;
+using static T_M_test;
 using static ES_Structs_Library;
+using UnityEngine.SceneManagement;
 
 public class M_B_DirectionPad_Manager : MonoBehaviour
 {
+
+    M_Scene_Manager scene_Manager;
+
     public List<IC_DP_Clicks_Locals> IC_DP_LeftClick_Locals_list;
     private bool isSelectedMax;
 
+
+    private void Awake()
+    {
+        scene_Manager = FindObjectOfType<M_Scene_Manager>().gameObject.GetComponent<M_Scene_Manager>();
+    }
     private void SelectNumber_Check()
     {
         List<bool> bool_list = new List<bool>();
@@ -18,7 +27,7 @@ public class M_B_DirectionPad_Manager : MonoBehaviour
         {
             bool_list.Add(locals.isSelected);
         }
-        if (bool_list.Count(b => b) >= 2)
+        if (bool_list.Count(b => b) >= 4)
         {
             isSelectedMax = true;
         }
@@ -45,9 +54,10 @@ public class M_B_DirectionPad_Manager : MonoBehaviour
         return result_list;
     }
 
-    private void Update()
+    public void DirectionPad_Manager_Update()
     {
         SelectNumber_Check();
+        scene_Manager.Camera_Switch();
     }
 
 }

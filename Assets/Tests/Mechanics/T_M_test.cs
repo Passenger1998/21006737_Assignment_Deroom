@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class T_M_001_001_All : MonoBehaviour
+public class T_M_test : MonoBehaviour
 {
 
 
@@ -195,7 +195,7 @@ public class T_M_001_001_All : MonoBehaviour
         direction_current = result_B_PlayerControl.direciton;
         isMoving = result_B_PlayerControl.isMoving;
 
-        Debug.Log(direction_current);
+        //Debug.Log(direction_current);
 
 
     }
