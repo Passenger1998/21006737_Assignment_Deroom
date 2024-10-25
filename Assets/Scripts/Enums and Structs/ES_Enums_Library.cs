@@ -9,5 +9,10 @@ public static class ES_Enums_Library
         none, front, back, left, right
     }
 
+    
+    public enum InputMethod
+    {
+        developerdebug, oldinput, newinput, fullmouse
+    }
 
 }

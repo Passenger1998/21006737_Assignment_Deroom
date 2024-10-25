@@ -4,11 +4,12 @@ using UnityEngine;
 using static ES_Structs_Library;
 using static ES_Enums_Library;
 using System;
+using Unity.VisualScripting;
 
 public class M_Scene_Manager : MonoBehaviour
 {
-    
     public ManagerList managerList;
+    
     [Serializable]
     public class ManagerList
     {
@@ -26,10 +27,17 @@ public class M_Scene_Manager : MonoBehaviour
         {
             public M_C_CameraSwtich_Manager cameraSwtich_Manager;
         }
-        
+
+        public InputControl inputControl;
+        [Serializable]
+        public class InputControl
+        {
+            public M_I_Movement_Manager movement_Manager;
+            public GameObject player;
+        }
+
     }
 
-    
     
 
     public void Camera_Switch()
@@ -41,7 +49,7 @@ public class M_Scene_Manager : MonoBehaviour
             switch (directionPad_Status.direction)
             {
                 case Direction.front:
-                    if (directionPad_Status.isDisplayOn)
+                    if (directionPad_Status.isSelected)
                     {
                         managerList.cameraBehaviour.cameraSwtich_Manager.camera_front.enabled = true;
                     }
@@ -51,7 +59,7 @@ public class M_Scene_Manager : MonoBehaviour
                     }
                     break;
                 case Direction.back:
-                    if (directionPad_Status.isDisplayOn)
+                    if (directionPad_Status.isSelected)
                     {
                         managerList.cameraBehaviour.cameraSwtich_Manager.camera_back.enabled = true;
                     }
@@ -61,7 +69,7 @@ public class M_Scene_Manager : MonoBehaviour
                     }
                     break;
                 case Direction.left:
-                    if (directionPad_Status.isDisplayOn)
+                    if (directionPad_Status.isSelected)
                     {
                         managerList.cameraBehaviour.cameraSwtich_Manager.camera_left.enabled = true;
                     }
@@ -71,7 +79,7 @@ public class M_Scene_Manager : MonoBehaviour
                     }
                     break;
                 case Direction.right:
-                    if (directionPad_Status.isDisplayOn)
+                    if (directionPad_Status.isSelected)
                     {
                         managerList.cameraBehaviour.cameraSwtich_Manager.camera_right.enabled = true;
                     }
@@ -90,5 +98,6 @@ public class M_Scene_Manager : MonoBehaviour
     private void Update()
     {
         managerList.userInterface.directionPad_Manager.DirectionPad_Manager_Update();
+        managerList.inputControl.movement_Manager.Movement_Manager_Update();
     }
 }

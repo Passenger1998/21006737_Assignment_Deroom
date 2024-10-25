@@ -54,7 +54,8 @@ public class IC_DP_Clicks_Locals : MonoBehaviour, IPointerEnterHandler, IPointer
         DirectionPad_Status result = new DirectionPad_Status
         {
             direction = direction_display,
-            isDisplayOn = isSelected
+            isSelected = isSelected,
+            isHovered = isHovered
         };
 
         return result;

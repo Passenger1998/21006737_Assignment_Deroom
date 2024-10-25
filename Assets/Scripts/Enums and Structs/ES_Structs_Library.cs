@@ -8,6 +8,7 @@ public static class ES_Structs_Library
     public struct DirectionPad_Status
     {
         public Direction direction;
-        public bool isDisplayOn;
+        public bool isSelected;
+        public bool isHovered;
     }
 }
