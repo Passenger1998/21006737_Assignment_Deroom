@@ -19,6 +19,7 @@ public class M_Scene_Manager : MonoBehaviour
         public class UserInterface
         {
             public M_B_DirectionPad_Manager directionPad_Manager;
+            public M_B_DisplaySwitch_Manager displaySwitch_Manager;
         }
 
         public CameraBehaviour cameraBehaviour;
@@ -42,14 +43,14 @@ public class M_Scene_Manager : MonoBehaviour
 
     public void Camera_Switch()
     {
-        List<DirectionPad_Status> DirectionPad_Status_list = managerList.userInterface.directionPad_Manager.DirectionPad_Return();
+        List<DirectionPad_Status> directionPad_Status_list = managerList.userInterface.displaySwitch_Manager.DirectionPad_Return();
 
-        foreach (DirectionPad_Status directionPad_Status in DirectionPad_Status_list)
+        foreach (DirectionPad_Status directionPad_Status in directionPad_Status_list)
         {
             switch (directionPad_Status.direction)
             {
                 case Direction.front:
-                    if (directionPad_Status.isSelected)
+                    if (directionPad_Status.isClicked)
                     {
                         managerList.cameraBehaviour.cameraSwtich_Manager.camera_front.enabled = true;
                     }
@@ -59,7 +60,7 @@ public class M_Scene_Manager : MonoBehaviour
                     }
                     break;
                 case Direction.back:
-                    if (directionPad_Status.isSelected)
+                    if (directionPad_Status.isClicked)
                     {
                         managerList.cameraBehaviour.cameraSwtich_Manager.camera_back.enabled = true;
                     }
@@ -69,7 +70,7 @@ public class M_Scene_Manager : MonoBehaviour
                     }
                     break;
                 case Direction.left:
-                    if (directionPad_Status.isSelected)
+                    if (directionPad_Status.isClicked)
                     {
                         managerList.cameraBehaviour.cameraSwtich_Manager.camera_left.enabled = true;
                     }
@@ -79,7 +80,7 @@ public class M_Scene_Manager : MonoBehaviour
                     }
                     break;
                 case Direction.right:
-                    if (directionPad_Status.isSelected)
+                    if (directionPad_Status.isClicked)
                     {
                         managerList.cameraBehaviour.cameraSwtich_Manager.camera_right.enabled = true;
                     }

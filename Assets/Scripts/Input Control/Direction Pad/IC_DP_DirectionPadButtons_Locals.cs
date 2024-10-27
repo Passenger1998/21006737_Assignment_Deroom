@@ -6,27 +6,27 @@ using UnityEngine.EventSystems;
 using static ES_Enums_Library;
 using static ES_Structs_Library;
 
-public class IC_DP_Clicks_Locals : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class IC_DP_DirectionPadButtons_Locals : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
-    public M_B_DirectionPad_Manager  directionPad_Manager;
+    public M_B_DirectionPad_Manager directionPad_Manager;
     public Direction direction_display;
-    public bool isSelected;
+    public bool isClicked;
     public bool isHovered;
     public Image image;
 
     void Response_LeftClick()
     {
-        if (isSelected)
+        if (isClicked)
         {
-            isSelected = false;
+            isClicked = false;
             image.color = Color.white;
         }
-        else if (!isSelected)
+        else if (!isClicked)
         {
             if (!directionPad_Manager.IsSelectedMax())
             {
-                isSelected = true;
+                isClicked = true;
                 image.color = Color.red;
             }
             
@@ -35,7 +35,7 @@ public class IC_DP_Clicks_Locals : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!isSelected) 
+        if (!isClicked) 
         {
             isHovered = true;
         }
@@ -54,7 +54,7 @@ public class IC_DP_Clicks_Locals : MonoBehaviour, IPointerEnterHandler, IPointer
         DirectionPad_Status result = new DirectionPad_Status
         {
             direction = direction_display,
-            isSelected = isSelected,
+            isClicked = isClicked,
             isHovered = isHovered
         };
 

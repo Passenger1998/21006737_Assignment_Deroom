@@ -12,7 +12,7 @@ public class M_B_DirectionPad_Manager : MonoBehaviour
 
     M_Scene_Manager scene_Manager;
 
-    public List<IC_DP_Clicks_Locals> IC_DP_LeftClick_Locals_list;
+    public List<IC_DP_DirectionPadButtons_Locals> IC_DP_LeftClick_Locals_list;
     private bool isSelectedMax;
 
 
@@ -23,9 +23,9 @@ public class M_B_DirectionPad_Manager : MonoBehaviour
     private void SelectNumber_Check()
     {
         List<bool> bool_list = new List<bool>();
-        foreach (IC_DP_Clicks_Locals locals in IC_DP_LeftClick_Locals_list)
+        foreach (IC_DP_DirectionPadButtons_Locals locals in IC_DP_LeftClick_Locals_list)
         {
-            bool_list.Add(locals.isSelected);
+            bool_list.Add(locals.isClicked);
         }
         if (bool_list.Count(b => b) >= 4)
         {
@@ -46,7 +46,7 @@ public class M_B_DirectionPad_Manager : MonoBehaviour
     {
         List<DirectionPad_Status> result_list = new List<DirectionPad_Status>();
 
-        foreach (IC_DP_Clicks_Locals locals in IC_DP_LeftClick_Locals_list)
+        foreach (IC_DP_DirectionPadButtons_Locals locals in IC_DP_LeftClick_Locals_list)
         {
             result_list.Add(locals.DirectionPad_Status_Return());
         }
