@@ -9,6 +9,5 @@ public static class ES_Structs_Library
     {
         public Direction direction;
         public bool isClicked;
-        public bool isHovered;
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using static ES_Enums_Library;
 using static ES_Structs_Library;
 
-public class IC_DS_DisplaySwitch_Locals : MonoBehaviour
+public class IC_DS_DisplaySwitchButtons_Locals : MonoBehaviour
 {
 
     public M_B_DisplaySwitch_Manager  directionPad_Manager;

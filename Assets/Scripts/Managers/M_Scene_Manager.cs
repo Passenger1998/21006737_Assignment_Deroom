@@ -37,6 +37,13 @@ public class M_Scene_Manager : MonoBehaviour
             public GameObject player;
         }
 
+        public VisualEffects visualEffects;
+        [Serializable]
+        public class VisualEffects
+        {
+            public V_InputResponse_Manager inputResponse_Manager;
+        }
+
     }
 
     
