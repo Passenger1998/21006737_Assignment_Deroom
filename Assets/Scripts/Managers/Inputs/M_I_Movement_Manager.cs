@@ -19,7 +19,7 @@ public class M_I_Movement_Manager : MonoBehaviour
     public void MovementControl_OldInput_Keys()
     {
         InputMethod inputMethod = S_Game_Centre.game_Centre.InputDetails_Return().inputMethod;
-
+        GameObject player = scene_Manager.Player_Return();
         float speed = S_Game_Centre.game_Centre.MovementControls_Return().speed;
 
         Rigidbody rb = scene_Manager.Rigidbody_Return();
@@ -30,22 +30,24 @@ public class M_I_Movement_Manager : MonoBehaviour
             Vector3 movement;
             if (Input.GetKey(KeyCode.W))
             {
-                movement = Vector3.forward;
-                rb.velocity = movement * speed * Time.deltaTime;
+                movement = player.transform.forward;
+                rb.velocity = movement * speed;
             } else if (Input.GetKey(KeyCode.S))
             {
-                movement = Vector3.back;
-                rb.velocity = movement * speed * Time.deltaTime;
+                movement = - player.transform.forward;
+                rb.velocity = movement * speed;
             } else if (Input.GetKey(KeyCode.A))
             {
-                movement = Vector3.left;
-                rb.velocity = movement * speed * Time.deltaTime;
+                Quaternion deltaRotation = Quaternion.Euler(new Vector3(0, -90f, 0));
+                rb.rotation = Quaternion.Slerp(rb.rotation, rb.rotation * deltaRotation, speed/2 * Time.deltaTime);
+                 
             } else if (Input.GetKey(KeyCode.D))
             {
-                movement = Vector3.right;
-                rb.velocity = movement * speed * Time.deltaTime;
+                Quaternion deltaRotation = Quaternion.Euler(new Vector3(0, 90f, 0));
+                rb.rotation = Quaternion.Slerp(rb.rotation, rb.rotation * deltaRotation, speed/2 * Time.deltaTime);
             }
         }
+
     }
 
 

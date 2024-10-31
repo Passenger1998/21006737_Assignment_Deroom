@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: addfda60eca66094080b9c305c01f205, type: 3}
   m_Name: InputMethod
   m_EditorClassIdentifier: 
-  inputMethod: 3
+  inputMethod: 1

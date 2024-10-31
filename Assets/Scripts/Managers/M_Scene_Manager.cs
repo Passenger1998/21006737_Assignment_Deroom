@@ -61,6 +61,10 @@ public class M_Scene_Manager : MonoBehaviour
     {
         return _References._Players.rb;
     }
+    public GameObject Player_Return()
+    {
+        return _References._Players.player;
+    }
 
     private void Update()
     {

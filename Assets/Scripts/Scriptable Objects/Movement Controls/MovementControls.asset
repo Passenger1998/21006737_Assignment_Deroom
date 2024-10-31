@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MovementControls
   m_EditorClassIdentifier: 
   movements:
-    speed: 2.5
+    speed: 1
