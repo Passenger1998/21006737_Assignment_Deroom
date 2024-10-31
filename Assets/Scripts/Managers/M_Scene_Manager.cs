@@ -8,8 +8,7 @@ using Unity.VisualScripting;
 
 public class M_Scene_Manager : MonoBehaviour
 {
-    public ManagerList managerList;
-    
+    public ManagerList _ManagerList;
     [Serializable]
     public class ManagerList
     {
@@ -18,8 +17,6 @@ public class M_Scene_Manager : MonoBehaviour
         [Serializable]
         public class UserInterface
         {
-            public M_B_DirectionPad_Manager directionPad_Manager;
-            public M_B_DisplaySwitch_Manager displaySwitch_Manager;
         }
 
         public CameraBehaviour cameraBehaviour;
@@ -34,7 +31,7 @@ public class M_Scene_Manager : MonoBehaviour
         public class InputControl
         {
             public M_I_Movement_Manager movement_Manager;
-            public GameObject player;
+            
         }
 
         public VisualEffects visualEffects;
@@ -46,66 +43,27 @@ public class M_Scene_Manager : MonoBehaviour
 
     }
 
-    
-
-    public void Camera_Switch()
+    public References _References;
+    [Serializable]
+    public class References
     {
-        List<DirectionPad_Status> directionPad_Status_list = managerList.userInterface.displaySwitch_Manager.DirectionPad_Return();
 
-        foreach (DirectionPad_Status directionPad_Status in directionPad_Status_list)
+        public Players _Players;
+        [Serializable]
+        public class Players
         {
-            switch (directionPad_Status.direction)
-            {
-                case Direction.front:
-                    if (directionPad_Status.isClicked)
-                    {
-                        managerList.cameraBehaviour.cameraSwtich_Manager.camera_front.enabled = true;
-                    }
-                    else
-                    {
-                        managerList.cameraBehaviour.cameraSwtich_Manager.camera_front.enabled = false;
-                    }
-                    break;
-                case Direction.back:
-                    if (directionPad_Status.isClicked)
-                    {
-                        managerList.cameraBehaviour.cameraSwtich_Manager.camera_back.enabled = true;
-                    }
-                    else
-                    {
-                        managerList.cameraBehaviour.cameraSwtich_Manager.camera_back.enabled = false;
-                    }
-                    break;
-                case Direction.left:
-                    if (directionPad_Status.isClicked)
-                    {
-                        managerList.cameraBehaviour.cameraSwtich_Manager.camera_left.enabled = true;
-                    }
-                    else
-                    {
-                        managerList.cameraBehaviour.cameraSwtich_Manager.camera_left.enabled = false;
-                    }
-                    break;
-                case Direction.right:
-                    if (directionPad_Status.isClicked)
-                    {
-                        managerList.cameraBehaviour.cameraSwtich_Manager.camera_right.enabled = true;
-                    }
-                    else
-                    {
-                        managerList.cameraBehaviour.cameraSwtich_Manager.camera_right.enabled = false;
-                    }
-                    break;
-                default:
-                    break;
-            }
-
+            public GameObject player;
+            public Rigidbody rb;
         }
+    }
+
+    public Rigidbody Rigidbody_Return()
+    {
+        return _References._Players.rb;
     }
 
     private void Update()
     {
-        managerList.userInterface.directionPad_Manager.DirectionPad_Manager_Update();
-        managerList.inputControl.movement_Manager.Movement_Manager_Update();
+        _ManagerList.inputControl.movement_Manager.Movement_Manager_Update();
     }
 }

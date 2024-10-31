@@ -16,58 +16,34 @@ public class M_I_Movement_Manager : MonoBehaviour
     }
 
 
-    public void MovementControl_FullMouse()
+    public void MovementControl_OldInput_Keys()
     {
         InputMethod inputMethod = S_Game_Centre.game_Centre.InputDetails_Return().inputMethod;
-        List<DirectionPad_Status> directionPad_Status_list_input = scene_Manager.managerList.userInterface.directionPad_Manager.DirectionPad_Return();
-        List<DirectionPad_Status> directionPad_Status_list_display = scene_Manager.managerList.userInterface.displaySwitch_Manager.DirectionPad_Return();
-
-        GameObject player = scene_Manager.managerList.inputControl.player;
 
         float speed = S_Game_Centre.game_Centre.MovementControls_Return().speed;
 
-        
+        Rigidbody rb = scene_Manager.Rigidbody_Return();
 
-        if (inputMethod == InputMethod.fullmouse)
+        if (inputMethod == InputMethod.oldinput)
         {
-            
-            foreach (DirectionPad_Status directionPad_Status in directionPad_Status_list_input)
+
+            Vector3 movement;
+            if (Input.GetKey(KeyCode.W))
             {
-                
-                switch (directionPad_Status.direction)
-                {
-                    case Direction.front:
-                        if (directionPad_Status.isClicked
-                            && !directionPad_Status_list_display.FirstOrDefault(s => s.direction == Direction.front).isClicked)
-                        {
-                            Debug.Log("working");
-                            player.transform.position += new Vector3(0, 0, speed) * Time.deltaTime;
-                        }
-                        break;
-                    case Direction.back:
-                        if (directionPad_Status.isClicked
-                            && !directionPad_Status_list_display.FirstOrDefault(s => s.direction == Direction.back).isClicked)
-                        {
-                            player.transform.position += new Vector3(0, 0, -speed) * Time.deltaTime;
-                        }
-                        break;
-                    case Direction.left:
-                        if (directionPad_Status.isClicked
-                            && !directionPad_Status_list_display.FirstOrDefault(s => s.direction == Direction.left).isClicked)
-                        {
-                            player.transform.position += new Vector3(-speed, 0, 0) * Time.deltaTime;
-                        }
-                        break;
-                    case Direction.right:
-                        if (directionPad_Status.isClicked
-                            && !directionPad_Status_list_display.FirstOrDefault(s => s.direction == Direction.right).isClicked)
-                        {
-                            player.transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
-                        }
-                        break;
-                    default:
-                        break;
-                }
+                movement = Vector3.forward;
+                rb.velocity = movement * speed * Time.deltaTime;
+            } else if (Input.GetKey(KeyCode.S))
+            {
+                movement = Vector3.back;
+                rb.velocity = movement * speed * Time.deltaTime;
+            } else if (Input.GetKey(KeyCode.A))
+            {
+                movement = Vector3.left;
+                rb.velocity = movement * speed * Time.deltaTime;
+            } else if (Input.GetKey(KeyCode.D))
+            {
+                movement = Vector3.right;
+                rb.velocity = movement * speed * Time.deltaTime;
             }
         }
     }
@@ -76,7 +52,7 @@ public class M_I_Movement_Manager : MonoBehaviour
 
     public void Movement_Manager_Update()
     {
-        MovementControl_FullMouse();
+        MovementControl_OldInput_Keys();
     }
 }
 
