@@ -23,7 +23,7 @@ public class M_Scene_Manager : MonoBehaviour
         [Serializable]
         public class CameraBehaviour
         {
-            public M_C_CameraSwtich_Manager cameraSwtich_Manager;
+            public M_C_Raycast_Manager raycast_Manager;
         }
 
         public InputControl inputControl;
@@ -69,5 +69,6 @@ public class M_Scene_Manager : MonoBehaviour
     private void Update()
     {
         _ManagerList.inputControl.movement_Manager.Movement_Manager_Update();
+        _ManagerList.cameraBehaviour.raycast_Manager.Raycast_Manager_Update();
     }
 }
