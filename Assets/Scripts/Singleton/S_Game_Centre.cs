@@ -12,6 +12,7 @@ public class S_Game_Centre : MonoBehaviour
     {
         public SO_InputDetails_SOF inputDetails;
         public SO_MovementControls_SOF movementControls;
+        public List<SO_LevelAgenda_SOF> levelAgenda_list;
     }
 
     public struct InputDetails_Return_Result
