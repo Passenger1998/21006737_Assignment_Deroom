@@ -18,9 +18,9 @@ public class M_I_Movement_Manager : MonoBehaviour
 
     public void MovementControl_OldInput_Keys()
     {
-        InputMethod inputMethod = S_Game_Centre.game_Centre.InputDetails_Return().inputMethod;
+        InputMethod inputMethod = S_Game_Centre.GameCentre.InputDetails_Return().inputMethod;
         GameObject player = scene_Manager.Player_Return();
-        float speed = S_Game_Centre.game_Centre.MovementControls_Return().speed;
+        float speed = S_Game_Centre.GameCentre.MovementControls_Return().speed;
 
         Rigidbody rb = scene_Manager.Rigidbody_Return();
 

@@ -7,6 +7,7 @@ using System;
 using Unity.VisualScripting;
 using static M_Scene_Manager;
 using static M_V_InputResponse_Manager;
+using static M_GamePlay_Manager;
 
 public class M_Scene_Manager : MonoBehaviour
 {
@@ -71,6 +72,13 @@ public class M_Scene_Manager : MonoBehaviour
             public SO_LevelAgenda_SOF levelSO_this;
             public bool isLevel_passed = false;
         }
+
+        public Items _Items;
+        [Serializable]
+        public class Items
+        {
+            public List<L_CollectableItems_Locals> collectableItems_list;
+        }
     }
 
 
@@ -84,8 +92,23 @@ public class M_Scene_Manager : MonoBehaviour
         return _References._Players.player;
     }
 
+    void SceneManager_Initialize()
+    {
+
+        L_CollectableItems_Locals[] collectableItems_Locals_list = FindObjectsOfType<L_CollectableItems_Locals>();
+        foreach (L_CollectableItems_Locals i in collectableItems_Locals_list)
+        {
+            _References._Items.collectableItems_list.Add(i);
+        }
+        
+        
+
+    }
+
     private void Awake()
     {
+        SceneManager_Initialize();
+
         M_V_InputResponse_Manager.VisualManager_Initialize_Data visualmanager_initialize_data = new M_V_InputResponse_Manager.VisualManager_Initialize_Data
         {
             slider_initialize_data = new M_V_InputResponse_Manager.Slider_Initialize_Data
@@ -111,5 +134,14 @@ public class M_Scene_Manager : MonoBehaviour
 
         };
         _ManagerList.visualEffects.inputResponse_Manager.VisualManager_Update(visualmanager_update_data);
+
+        M_GamePlay_Manager.Scene_Manager_Update_Data scene_Manager_Update_Data = new Scene_Manager_Update_Data
+        {
+            itemCollect_Detect_Data = new ItemCollect_Detect_Data
+            {
+                collectableItems_Locals_list = _References._Items.collectableItems_list
+            }
+        };
+        _ManagerList._Gameplay.GamePlay_Manager.GamePlayManager_Update(scene_Manager_Update_Data);
     }
 }

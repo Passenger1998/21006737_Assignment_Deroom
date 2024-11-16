@@ -52,7 +52,6 @@ public class M_V_InputResponse_Manager : MonoBehaviour
     }
     public void VisualManager_Update(VisualManager_Update_Data data)
     {
-        Debug.Log("worked");
         Slider_Sync_Data slider_sync_data = data.slider_sync_data;
         Slider_Sync(slider_sync_data);
     }

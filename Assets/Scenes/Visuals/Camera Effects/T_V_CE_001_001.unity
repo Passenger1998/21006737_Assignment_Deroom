@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c2c1bf8203c07479eb9ec434cbef9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptableObjects:
+  _ScriptableObjects:
     inputDetails: {fileID: 11400000, guid: 7ecb63be1fcf50f4b92ee07b7b3ff67e, type: 2}
     movementControls: {fileID: 11400000, guid: 4756ddb0e57495b4dbff3f9f41ac93c3, type: 2}
     levelAgenda_list:
@@ -1577,6 +1577,8 @@ MonoBehaviour:
     _Level:
       levelSO_this: {fileID: 11400000, guid: 9309ec3444487454fa1e5677c2c7a0b5, type: 2}
       isLevel_passed: 0
+    _Items:
+      collectableItems_list: []
 --- !u!114 &1381102414
 MonoBehaviour:
   m_ObjectHideFlags: 0

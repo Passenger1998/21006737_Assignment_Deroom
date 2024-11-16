@@ -6,7 +6,7 @@ using static ES_Enums_Library;
 
 public class S_Game_Centre : MonoBehaviour
 {
-    public ScriptableObjects scriptableObjects;
+    public ScriptableObjects _ScriptableObjects;
     [Serializable]
     public class ScriptableObjects
     {
@@ -24,7 +24,7 @@ public class S_Game_Centre : MonoBehaviour
     {
         InputDetails_Return_Result result = new InputDetails_Return_Result
         {
-            inputMethod = scriptableObjects.inputDetails.inputMethod
+            inputMethod = _ScriptableObjects.inputDetails.inputMethod
         };
 
         return result;
@@ -38,22 +38,22 @@ public class S_Game_Centre : MonoBehaviour
     {
         MovementControls_Return_Result result = new MovementControls_Return_Result
         {
-            speed = scriptableObjects.movementControls.movements.speed
+            speed = _ScriptableObjects.movementControls.movements.speed
         };
         return result;
     }
 
-    public static S_Game_Centre game_Centre { get; private set; }
+    public static S_Game_Centre GameCentre { get; private set; }
 
     private void Awake()
     {
-        if (game_Centre != null && game_Centre != this)
+        if (GameCentre != null && GameCentre != this)
         {
             Destroy(this);
         }
         else
         {
-            game_Centre = this;
+            GameCentre = this;
         }
     }
 }

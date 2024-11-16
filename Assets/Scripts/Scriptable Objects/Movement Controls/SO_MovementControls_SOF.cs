@@ -14,5 +14,13 @@ public class SO_MovementControls_SOF : ScriptableObject
     {
         public float speed;
     }
+
+    public MovementDetects _MovementDetects;
+    [Serializable]
+    public class MovementDetects
+    {
+        public float collectDetectDist;
+    }
+
 }
 
