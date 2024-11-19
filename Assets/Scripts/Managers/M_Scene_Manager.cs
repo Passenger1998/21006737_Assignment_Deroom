@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 using static M_Scene_Manager;
 using static M_V_InputResponse_Manager;
 using static M_GamePlay_Manager;
+using UnityEngine.SceneManagement;
 
 public class M_Scene_Manager : MonoBehaviour
 {
@@ -95,17 +96,14 @@ public class M_Scene_Manager : MonoBehaviour
     void SceneManager_Initialize()
     {
 
-        L_CollectableItems_Locals[] collectableItems_Locals_list = FindObjectsOfType<L_CollectableItems_Locals>();
-        foreach (L_CollectableItems_Locals i in collectableItems_Locals_list)
+        L_CollectableItems_Locals[] collectableItems_Locals_array = FindObjectsOfType<L_CollectableItems_Locals>();
+        foreach (L_CollectableItems_Locals i in collectableItems_Locals_array)
         {
             _References._Items.collectableItems_list.Add(i);
         }
-        
-        
 
     }
-
-    private void Awake()
+        private void Awake()
     {
         SceneManager_Initialize();
 

@@ -42,12 +42,15 @@ public class M_GamePlay_Manager : MonoBehaviour
     void ItemCollect_Detect(ItemCollect_Detect_Data data)
     {
         List<L_CollectableItems_Locals> collectableItems_Locals_list = data.collectableItems_Locals_list;
-        foreach (L_CollectableItems_Locals collectableItems_Locals in collectableItems_Locals_list)
+        if (collectableItems_Locals_list.Count > 0)
         {
-            if (Vector3.Distance(collectableItems_Locals.gameObject.transform.position, this.transform.position) <= S_Game_Centre.GameCentre._ScriptableObjects.movementControls._MovementDetects.collectDetectDist)
+            foreach (L_CollectableItems_Locals collectableItems_Locals in collectableItems_Locals_list)
             {
-                collectableItems_Locals.isCollectable_Set(true);
-                collectableItems_Locals.player_trans_Set(SceneManager._References._Players.player.transform);
+                if (Vector3.Distance(collectableItems_Locals.gameObject.transform.position, this.transform.position) <= S_Game_Centre.GameCentre._ScriptableObjects.movementControls._MovementDetects.collectDetectDist)
+                {
+                    collectableItems_Locals.isCollectable_Set(true);
+                    collectableItems_Locals.player_trans_Set(SceneManager._References._Players.player.transform);
+                }
             }
         }
     }

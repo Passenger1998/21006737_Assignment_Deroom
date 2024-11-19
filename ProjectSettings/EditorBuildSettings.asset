@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Visuals/Camera Effects/T_V_CE_001_001.unity
     guid: bc1162a5d3f59a44db84fe1f9a488118
+  - enabled: 1
+    path: Assets/Scenes/Test Empty Scene.unity
+    guid: d310dac709257db4a85c341406fc270b
   m_configObjects: {}

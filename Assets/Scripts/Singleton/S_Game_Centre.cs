@@ -15,6 +15,13 @@ public class S_Game_Centre : MonoBehaviour
         public List<SO_LevelAgenda_SOF> levelAgenda_list;
     }
 
+    public SceneInfo _SceneInfo;
+    [Serializable]
+    public class SceneInfo
+    {
+        public string currentScene_additive_name;
+    }
+
     public struct InputDetails_Return_Result
     {
         public InputMethod inputMethod;
