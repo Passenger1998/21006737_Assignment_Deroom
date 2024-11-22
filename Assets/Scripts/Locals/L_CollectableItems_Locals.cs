@@ -46,7 +46,7 @@ public class L_CollectableItems_Locals : MonoBehaviour
 
         if (isCollectable && player_trans != null)
         {
-            rb.AddForce((player_trans.position - this.transform.position)*5);
+            rb.AddForce((player_trans.position - this.transform.position)*10);
             if (this.gameObject.transform.localScale.x >= 0.01)
             {
                 this.gameObject.transform.localScale -= Vector3.one * 0.5f * Time.deltaTime;
