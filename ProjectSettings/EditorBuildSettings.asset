@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Test Empty Scene.unity
     guid: d310dac709257db4a85c341406fc270b
   - enabled: 1
-    path: Assets/Scenes/New Scene 1.unity
+    path: Assets/Scenes/Scene Packing.unity
     guid: eeae5dda1aa5fca43a04c797cc9ca2c1
+  - enabled: 1
+    path: Assets/Scenes/Scene Last.unity
+    guid: 339ba26fb051a46418d7bffdd4eb3b77
   m_configObjects: {}
