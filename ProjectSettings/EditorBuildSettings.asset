@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene Last.unity
     guid: 339ba26fb051a46418d7bffdd4eb3b77
+  - enabled: 1
+    path: Assets/Scenes/Scene Party.unity
+    guid: f744e90f681f1a341af54076a30b1855
   m_configObjects: {}
