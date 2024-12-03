@@ -7,15 +7,20 @@ public class L_CoversShift_Locals : MonoBehaviour
 {
 
     public List<GameObject> cover_Shade_list;
-    public GameObject cover_normal;
-    public GameObject cover_shade;
+    public List<GameObject> cover_Normal_list;
     bool isUnderCover;
 
     private void Awake()
     {
-        foreach (Transform child in cover_shade.transform)
+        GameObject[] cover_Normal_array = GameObject.FindGameObjectsWithTag("Scene");
+        Debug.Log(cover_Normal_array.Length);
+        foreach(GameObject sceneObject in cover_Normal_array)
         {
-            cover_Shade_list.Add(child.gameObject);
+            if (!cover_Shade_list.Contains(sceneObject))
+            {
+                cover_Normal_list.Add(sceneObject);
+            }
+            
         }
     }
 
@@ -27,7 +32,11 @@ public class L_CoversShift_Locals : MonoBehaviour
             {
                 cover.SetActive(true);
             }
-            cover_normal.SetActive(false);
+
+            foreach (GameObject cover in cover_Normal_list)
+            {
+                cover.SetActive(false);
+            }
             isUnderCover = true;
         }
     }
@@ -40,7 +49,11 @@ public class L_CoversShift_Locals : MonoBehaviour
             {
                 cover.SetActive(false);
             }
-            cover_normal.SetActive(true);
+
+            foreach (GameObject cover in cover_Normal_list)
+            {
+                cover.SetActive(true);
+            }
             isUnderCover = false;
         }
     }
