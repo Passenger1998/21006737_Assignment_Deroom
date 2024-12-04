@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene Party.unity
     guid: f744e90f681f1a341af54076a30b1855
+  - enabled: 1
+    path: Assets/Scenes/Scene Study.unity
+    guid: 2ba5eb1f396ddc54b8579c670fcec45d
+  - enabled: 1
+    path: Assets/Scenes/test_core_interaction.unity
+    guid: 87193029feb74d540ac3b6da2a532c09
   m_configObjects: {}
