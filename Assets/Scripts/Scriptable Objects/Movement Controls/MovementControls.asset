@@ -15,4 +15,4 @@ MonoBehaviour:
   movements:
     speed: 2.5
   _MovementDetects:
-    collectDetectDist: 2
+    collectDetectDist: 1
