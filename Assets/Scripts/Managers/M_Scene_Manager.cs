@@ -82,7 +82,10 @@ public class M_Scene_Manager : MonoBehaviour
         }
     }
 
-
+    public void Set_isLevel_passed(bool toggle)
+    {
+        _References._Level.isLevel_passed = toggle;
+    }
 
     public Rigidbody Rigidbody_Return()
     {
@@ -103,7 +106,7 @@ public class M_Scene_Manager : MonoBehaviour
         }
 
     }
-        private void Awake()
+    private void Awake()
     {
         SceneManager_Initialize();
 

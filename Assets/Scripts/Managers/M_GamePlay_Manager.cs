@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class M_GamePlay_Manager : MonoBehaviour
 {
-    M_Scene_Manager SceneManager;
+    M_Scene_Manager _SceneManager;
+    int itemCollect_total;
     [SerializeField] int itemCollect_count = 0;
 
     private void Awake()
     {
-        SceneManager = FindObjectOfType<M_Scene_Manager>().gameObject.GetComponent<M_Scene_Manager>();
+        _SceneManager = FindObjectOfType<M_Scene_Manager>().gameObject.GetComponent<M_Scene_Manager>();
+
+        itemCollect_total = _SceneManager._References._Level.levelSO_this.collect_total;
     }
 
     private void OnTriggerEnter(Collider col)
@@ -49,7 +52,7 @@ public class M_GamePlay_Manager : MonoBehaviour
                 if (Vector3.Distance(collectableItems_Locals.gameObject.transform.position, this.transform.position) <= S_Game_Centre.GameCentre._ScriptableObjects.movementControls._MovementDetects.collectDetectDist)
                 {
                     collectableItems_Locals.isCollectable_Set(true);
-                    collectableItems_Locals.player_trans_Set(SceneManager._References._Players.player.transform);
+                    collectableItems_Locals.player_trans_Set(_SceneManager._References._Players.player.transform);
                 }
             }
         }
@@ -64,5 +67,10 @@ public class M_GamePlay_Manager : MonoBehaviour
     {
         ItemCollect_Detect_Data itemCollect_Detect_Data = data.itemCollect_Detect_Data;
         ItemCollect_Detect(itemCollect_Detect_Data);
+
+        if (itemCollect_count >= itemCollect_total)
+        {
+            _SceneManager.Set_isLevel_passed(true);
+        }
     }
 }
