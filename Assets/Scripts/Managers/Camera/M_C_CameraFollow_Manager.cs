@@ -19,9 +19,23 @@ public class M_C_CameraFollow_Manager : MonoBehaviour
 
     }
 
+    void CameraFollow_Soft()
+    {
+        foreach (Camera camera in cameras)
+        {
+            Vector3 velocity_ref = Vector3.zero;
+            if (camera.enabled)
+            {
+                camera.transform.position = Vector3.SmoothDamp(camera.transform.position, new Vector3(target.transform.position.x, camera.transform.position.y, target.transform.position.z), ref velocity_ref, 0.1f);
+            }
+        }
+
+    }
+
     public void CameraFollow_Manager_Update()
     {
-        CameraFollow_Hard();
+        //CameraFollow_Hard();
+        CameraFollow_Soft();
     }
 
 }
