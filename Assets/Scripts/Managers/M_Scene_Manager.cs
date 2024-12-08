@@ -96,6 +96,14 @@ public class M_Scene_Manager : MonoBehaviour
         return _References._Players.player;
     }
 
+    private void LevelPass_React()
+    {
+        if (_References._Level.isLevel_passed)
+        {
+            S_Game_Centre.GameCentre.LevelUpdate();
+        }
+    }
+
     void SceneManager_Initialize()
     {
 
@@ -144,5 +152,7 @@ public class M_Scene_Manager : MonoBehaviour
             }
         };
         _ManagerList._Gameplay.GamePlay_Manager.GamePlayManager_Update(scene_Manager_Update_Data);
+
+        LevelPass_React();
     }
 }

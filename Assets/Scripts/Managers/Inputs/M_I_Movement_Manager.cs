@@ -15,7 +15,6 @@ public class M_I_Movement_Manager : MonoBehaviour
         scene_Manager = FindObjectOfType<M_Scene_Manager>().gameObject.GetComponent<M_Scene_Manager>();
     }
 
-
     public void MovementControl_OldInput_Keys()
     {
         InputMethod inputMethod = S_Game_Centre.GameCentre.InputDetails_Return().inputMethod;

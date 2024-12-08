@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static ES_Enums_Library;
+using UnityEngine.SceneManagement;
 
 public class S_Game_Centre : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class S_Game_Centre : MonoBehaviour
         public SO_InputDetails_SOF inputDetails;
         public SO_MovementControls_SOF movementControls;
         public List<SO_LevelAgenda_SOF> levelAgenda_list;
+        public int levelAgenda_list_int = 0;
     }
 
     public SceneInfo _SceneInfo;
@@ -49,6 +51,12 @@ public class S_Game_Centre : MonoBehaviour
         };
         return result;
     }
+    
+    public void LevelUpdate()
+    {
+        _ScriptableObjects.levelAgenda_list_int += 1;
+        SceneManager.LoadScene(_ScriptableObjects.levelAgenda_list[_ScriptableObjects.levelAgenda_list_int].level_name);
+    }
 
     public static S_Game_Centre GameCentre { get; private set; }
 
@@ -62,6 +70,21 @@ public class S_Game_Centre : MonoBehaviour
         {
             GameCentre = this;
         }
+        DontDestroyOnLoad(this.gameObject);
     }
+
+    //private void Awake()
+    //{
+    //    if (GameCentre != null && GameCentre != this)
+    //    {
+    //        Destroy(this);
+    //    }
+    //    else
+    //    {
+    //        GameCentre = this;
+    //    }
+    //}
+
+
 }
 
