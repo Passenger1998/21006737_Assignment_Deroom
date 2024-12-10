@@ -9,6 +9,8 @@ using System.Linq;
 public class M_I_Movement_Manager : MonoBehaviour
 {
     M_Scene_Manager scene_Manager;
+    bool isMoving = false;
+    public AudioSource cleaner_audio;
 
     private void Awake()
     {
@@ -31,10 +33,14 @@ public class M_I_Movement_Manager : MonoBehaviour
             {
                 movement = player.transform.forward;
                 rb.velocity = movement * speed;
+
+                isMoving = true;
             } else if (Input.GetKey(KeyCode.S))
             {
                 movement = - player.transform.forward;
                 rb.velocity = movement * speed;
+
+                isMoving = true;
             } else if (Input.GetKey(KeyCode.A))
             {
                 Quaternion deltaRotation = Quaternion.Euler(new Vector3(0, -90f, 0));
@@ -45,6 +51,11 @@ public class M_I_Movement_Manager : MonoBehaviour
                 Quaternion deltaRotation = Quaternion.Euler(new Vector3(0, 90f, 0));
                 rb.rotation = Quaternion.Slerp(rb.rotation, rb.rotation * deltaRotation, speed/2 * Time.deltaTime);
             }
+            
+            if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
+            {
+                isMoving = false;
+            }
         }
 
     }
@@ -54,6 +65,11 @@ public class M_I_Movement_Manager : MonoBehaviour
     public void Movement_Manager_Update()
     {
         MovementControl_OldInput_Keys();
+
+        if (isMoving)
+        {
+
+        }
     }
 }
 

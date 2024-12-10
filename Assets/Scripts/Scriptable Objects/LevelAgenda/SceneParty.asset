@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SceneParty
   m_EditorClassIdentifier: 
   level_name: SceneParty
-  collect_total: 19
+  collect_total: 20
