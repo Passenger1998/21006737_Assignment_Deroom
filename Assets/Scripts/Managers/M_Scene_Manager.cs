@@ -72,6 +72,7 @@ public class M_Scene_Manager : MonoBehaviour
         {
             public SO_LevelAgenda_SOF levelSO_this;
             public bool isLevel_passed = false;
+            public GameObject pressContinueButton;
         }
 
         public Items _Items;
@@ -100,7 +101,15 @@ public class M_Scene_Manager : MonoBehaviour
     {
         if (_References._Level.isLevel_passed)
         {
-            S_Game_Centre.GameCentre.LevelUpdate();
+
+            _References._Level.pressContinueButton.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                S_Game_Centre.GameCentre.LevelUpdate();
+            }
+            
+            
         }
     }
 

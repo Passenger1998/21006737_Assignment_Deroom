@@ -9,7 +9,7 @@ using System.Linq;
 public class M_I_Movement_Manager : MonoBehaviour
 {
     M_Scene_Manager scene_Manager;
-    bool isMoving = false;
+    [SerializeField] bool isMoving = false;
     public AudioSource cleaner_audio;
 
     private void Awake()
@@ -66,9 +66,12 @@ public class M_I_Movement_Manager : MonoBehaviour
     {
         MovementControl_OldInput_Keys();
 
-        if (isMoving)
+        if (isMoving && !cleaner_audio.isPlaying)
         {
-
+            cleaner_audio.Play();
+        } else if (!isMoving && cleaner_audio.isPlaying)
+        {
+            cleaner_audio.Stop();
         }
     }
 }

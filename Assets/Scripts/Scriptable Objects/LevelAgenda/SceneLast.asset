@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SceneLast
   m_EditorClassIdentifier: 
   level_name: SceneLast
-  collect_total: 5
+  collect_total: 0
