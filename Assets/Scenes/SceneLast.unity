@@ -4604,6 +4604,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 67357195407604901, guid: 44769d29ea572a64cb4d26ad245e77e3, type: 3}
+      propertyPath: m_text
+      value: 3 July, 2021
+      objectReference: {fileID: 0}
+    - target: {fileID: 67357195407604901, guid: 44769d29ea572a64cb4d26ad245e77e3, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 1078731013070271563, guid: 44769d29ea572a64cb4d26ad245e77e3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

@@ -7,6 +7,17 @@ using UnityEngine.SceneManagement;
 
 public class S_Game_Centre : MonoBehaviour
 {
+    public Animator ani;
+    [SerializeField] float time = 0;
+    [SerializeField] bool isCountingTime = false;
+    [SerializeField] bool isTime = false;
+    Status status = Status.none;
+
+    enum Status
+    {
+        nextscene, exit, none
+    }
+
     public ScriptableObjects _ScriptableObjects;
     [Serializable]
     public class ScriptableObjects
@@ -54,8 +65,55 @@ public class S_Game_Centre : MonoBehaviour
     
     public void LevelUpdate()
     {
-        _ScriptableObjects.levelAgenda_list_int += 1;
-        SceneManager.LoadScene(_ScriptableObjects.levelAgenda_list[_ScriptableObjects.levelAgenda_list_int].level_name);
+        ani.SetBool("isPlay", true);
+        isCountingTime = true;  
+        status = Status.nextscene;
+        
+    }
+
+    private void Update()
+    {
+        if (Cursor.visible)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        
+
+        if (isCountingTime)
+        {
+            time += Time.deltaTime;
+
+            if (time >= 2f)
+            {
+                isTime = true;
+                isCountingTime = false;
+                time = 0;
+                ani.SetBool("isPlay", false);
+                switch (status)
+                {
+                    case Status.nextscene:
+                        _ScriptableObjects.levelAgenda_list_int += 1;
+                        SceneManager.LoadScene(_ScriptableObjects.levelAgenda_list[_ScriptableObjects.levelAgenda_list_int].level_name);
+                        break;
+                    case Status.exit:
+                        Application.Quit();
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ani.SetBool("isPlay", true);
+            isCountingTime = true;
+            status = Status.exit;
+        }
     }
 
     public static S_Game_Centre GameCentre { get; private set; }

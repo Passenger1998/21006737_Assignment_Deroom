@@ -10,6 +10,7 @@ public class L_CollectableItems_Locals : MonoBehaviour
     [SerializeField] Transform player_trans;
     Rigidbody rb;
 
+    public GameObject particleObject;
 
     public void isCollected_Set(bool i)
     {
@@ -42,6 +43,9 @@ public class L_CollectableItems_Locals : MonoBehaviour
     {
         if (isCollected)
         {
+            GameObject particles = Instantiate(particleObject, particleObject.transform.position, particleObject.transform.rotation);
+            particles.SetActive(true);
+            Destroy(particles, 1f);
             this.gameObject.SetActive(false);
         }
 
